@@ -1,6 +1,4 @@
 using NUnit.Framework;
-using TaskManager.Entities;
-using TaskManager.Services;
 
 namespace TaskManager.Tests {
     public class ShopManagerTests {

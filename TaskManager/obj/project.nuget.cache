@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "xTMdhpg5a0SG27hnpU8nSupGYKMiYkKsnYoyAYOQG/zMdd3m7bzlzsDxvGF1NYm0M37QW/nAn3BVrDbo0TJjfQ==",
+  "dgSpecHash": "ud8mTKUplv1ikUeqTlhmezTLGMlSolMcZuv2jffZ466B4kUX40BsIs68Drx+w4m+3MdV/tdK/EdxcwroNKMLsw==",
   "success": true,
   "projectFilePath": "C:\\Users\\79148\\RiderProjects\\Learn\\TaskManagerGood\\TaskManager\\TaskManager\\TaskManager.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\79148\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\5.0.2\\microsoft.extensions.dependencyinjection.5.0.2.nupkg.sha512",
+    "C:\\Users\\79148\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\79148\\.nuget\\packages\\spectre.console\\0.41.0\\spectre.console.0.41.0.nupkg.sha512",
+    "C:\\Users\\79148\\.nuget\\packages\\wcwidth\\0.2.0\\wcwidth.0.2.0.nupkg.sha512"
+  ],
   "logs": []
 }
