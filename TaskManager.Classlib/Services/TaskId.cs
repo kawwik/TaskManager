@@ -11,14 +11,6 @@
             return new TaskId(_currentId++);
         }
 
-        public static bool operator ==(TaskId id1, TaskId id2) {
-            return id1 == id2;
-        }
-        
-        public static bool operator !=(TaskId id1, TaskId id2) {
-            return id1 != id2;
-        }
-
         public int GetIntId() {
             return _id;
         }

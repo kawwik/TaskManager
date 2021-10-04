@@ -13,6 +13,7 @@ namespace TaskManager.Services {
         void DeleteGroup(string groupName);
         void AddToGroup(TaskId taskId, string groupName);
         void DeleteFromGroup(TaskId taskId, string groupName);
+        TaskGroup GetGroup(string groupName);
         List<Task> CompletedTasks();
         List<Task> ExpiringTodayTasks();
     }

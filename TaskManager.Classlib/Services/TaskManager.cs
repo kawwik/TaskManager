@@ -11,8 +11,8 @@ namespace TaskManager.Services {
         private readonly List<TaskGroup> _groups = new List<TaskGroup>();
 
         public TaskManager() { }
-        
-        public ReadOnlyCollection<Task> Tasks { get; }
+
+        public ReadOnlyCollection<Task> Tasks => _tasks.AsReadOnly();
         
         public void AddTask(Task task) {
             if (FindTask(task.Name) != null)
@@ -46,7 +46,7 @@ namespace TaskManager.Services {
                 .Find(taskGroup => taskGroup.Name == groupName);
         }
 
-        private TaskGroup GetGroup(string groupName) {
+        public TaskGroup GetGroup(string groupName) {
             TaskGroup taskGroup = _groups
                 .Find(taskGroup => taskGroup.Name == groupName);
 
@@ -70,6 +70,7 @@ namespace TaskManager.Services {
             TaskGroup taskGroup = GetGroup(groupName);
             Task task = GetTask(taskId);
             taskGroup.AddToGroup(task);
+            _tasks.Remove(task);
         }
 
         public void DeleteFromGroup(TaskId taskId, string groupName) {

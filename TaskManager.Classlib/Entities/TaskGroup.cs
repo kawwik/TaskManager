@@ -16,7 +16,7 @@ namespace TaskManager.Entities {
         public string Name { get; }
         public ReadOnlyCollection<Task> Tasks => _tasks.AsReadOnly();
 
-        public void AddToGroup(Task task) {
+        internal void AddToGroup(Task task) {
             _tasks.Add(task);
         }
 
@@ -24,16 +24,16 @@ namespace TaskManager.Entities {
             return _tasks
                 .Find(task => task.Name == taskName);
         }
-        
+
         public Task GetTask(TaskId taskId) {
             Task task = _tasks
-                .Find(task => task.Id == taskId);
+                .Find(task => task.Id.GetIntId() == taskId.GetIntId());
 
             return task ?? throw new NotImplementedException($"Task with ID {taskId} does not exist.");
         }
 
         /// <returns>Deleted task.</returns>
-        public Task DeleteFromGroup(TaskId taskId) {
+        internal Task DeleteFromGroup(TaskId taskId) {
             Task task = GetTask(taskId);
             _tasks.Remove(task);
             return task;

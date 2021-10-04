@@ -31,7 +31,7 @@ namespace TaskManager.Entities {
             _subtasks.Add(new Subtask(subtaskName));
         }
 
-        public int CompletedSubtask() {
+        public int CompletedSubtasks() {
             return _subtasks.Select(subtask => subtask.IsCompleted).Count();
         }
     }
