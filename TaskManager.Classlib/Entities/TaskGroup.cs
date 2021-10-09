@@ -29,14 +29,13 @@ namespace TaskManager.Entities {
             Task task = _tasks
                 .Find(task => task.Id.GetIntId() == taskId.GetIntId());
 
-            return task ?? throw new NotImplementedException($"Task with ID {taskId} does not exist.");
+            return task ?? throw new TaskManagerException($"Task with ID {taskId} does not exist.");
         }
 
         /// <returns>Deleted task.</returns>
-        internal Task DeleteFromGroup(TaskId taskId) {
+        internal bool DeleteFromGroup(TaskId taskId) {
             Task task = GetTask(taskId);
-            _tasks.Remove(task);
-            return task;
+            return _tasks.Remove(task);
         }
 
         public List<Task> CompletedTasks() {

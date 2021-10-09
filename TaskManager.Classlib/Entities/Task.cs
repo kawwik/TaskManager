@@ -32,7 +32,7 @@ namespace TaskManager.Entities {
         }
 
         public int CompletedSubtasks() {
-            return _subtasks.Select(subtask => subtask.IsCompleted).Count();
+            return _subtasks.Count(subtask => subtask.IsCompleted);
         }
     }
 }
