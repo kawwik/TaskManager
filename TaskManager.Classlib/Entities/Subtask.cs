@@ -1,12 +1,14 @@
 ﻿using System;
+using TaskManager.Services;
 using TaskManager.Tools;
 
 namespace TaskManager.Entities {
     public class Subtask {
-        public Subtask(string subtaskName) {
+        public Subtask(string subtaskName, Id id) {
             Name = subtaskName;
         }
 
+        public Id Id { get; }
         public string Name { get; }
         public bool IsCompleted { get; private set; } = false;
 

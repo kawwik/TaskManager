@@ -19,14 +19,17 @@ namespace TaskManager.Services {
         public void AddTask(Task task) {
             if (FindTask(task.Name) != null)
                 throw new TaskManagerException("Task already exists.");
+            if (_tasks.Exists(addedTask => addedTask.Id.GetIntId() == task.Id.GetIntId()))
+                throw new TaskManagerException("This ID is already taken.");
+
             _tasks.Add(task);
         }
 
-        public void DeleteTask(TaskId taskId) {
-            GetTask(taskId);
-            _tasks.RemoveAll(task => task.Id.GetIntId() == taskId.GetIntId());
+        public void DeleteTask(Id id) {
+            GetTask(id);
+            _tasks.RemoveAll(task => task.Id.GetIntId() == id.GetIntId());
             foreach (TaskGroup taskGroup in _groups) {
-                taskGroup.DeleteFromGroup(taskId);
+                taskGroup.DeleteFromGroup(id);
             }
         }
 
@@ -44,9 +47,9 @@ namespace TaskManager.Services {
                 .Find(task => task.Name == taskName);
         }
 
-        public Task GetTask(TaskId taskId) {
+        public Task GetTask(Id id) {
             Task task = AllTasks()
-                .Find(task => task.Id.GetIntId() == taskId.GetIntId());
+                .Find(task => task.Id.GetIntId() == id.GetIntId());
 
             return task ?? throw new TaskManagerException("Incorrect task ID.");
         }
@@ -81,17 +84,17 @@ namespace TaskManager.Services {
             _groups.Remove(taskGroup);
         }
 
-        public void AddToGroup(TaskId taskId, string groupName) {
+        public void AddToGroup(Id id, string groupName) {
             TaskGroup taskGroup = GetGroup(groupName);
-            Task task = GetTask(taskId);
+            Task task = GetTask(id);
             taskGroup.AddToGroup(task);
             _tasks.Remove(task);
         }
 
-        public void DeleteFromGroup(TaskId taskId, string groupName) {
+        public void DeleteFromGroup(Id id, string groupName) {
             TaskGroup taskGroup = GetGroup(groupName);
-            Task task = taskGroup.GetTask(taskId);
-            taskGroup.DeleteFromGroup(taskId);
+            Task task = taskGroup.GetTask(id);
+            taskGroup.DeleteFromGroup(id);
             _tasks.Add(task);
         }
 

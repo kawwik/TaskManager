@@ -22,7 +22,7 @@ namespace TaskManager.Client.Commands {
         }
 
         public override int Execute(CommandContext context, Settings settings) {
-            _taskManager.AddToGroup(new TaskId(settings.TaskId), settings.GroupName);
+            _taskManager.AddToGroup(new Id(settings.TaskId), settings.GroupName);
             _userInterface.ShowMessage("Task added to the group.");
             return 0;
         }

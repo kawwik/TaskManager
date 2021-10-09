@@ -12,9 +12,9 @@ namespace TaskManager.Client {
                                      (task.IsCompleted ? " (completed)" : ""));
             
             foreach (Subtask subtask in task.Subtasks) {
-                taskNode.AddNode($"{subtask.Name}");
+                taskNode.AddNode($"{task.Id.GetIntId()}.{subtask.Id.GetIntId()}. {subtask.Name}");
             }
-            
+
             return taskNode;
         }
 
@@ -23,7 +23,7 @@ namespace TaskManager.Client {
             foreach (Task task in taskGroup.Tasks) {
                 taskNode.AddNode(MakeTaskNode(task));
             }
-            
+
             return taskNode;
         }
     }

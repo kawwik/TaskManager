@@ -16,14 +16,16 @@ namespace TaskManager.Client.Commands {
 
         private readonly ITaskManager _taskManager;
         private readonly IUserInterface _userInterface;
+        private readonly IdGenerator _idGenerator;
 
-        public AddTaskCommand(ITaskManager taskManager, IUserInterface userInterface) {
+        public AddTaskCommand(ITaskManager taskManager, IUserInterface userInterface, IdGenerator idGenerator) {
             _taskManager = taskManager;
             _userInterface = userInterface;
+            _idGenerator = idGenerator;
         }
 
         public override int Execute(CommandContext context, Settings settings) {
-            _taskManager.AddTask(new Task(settings.TaskName, new Deadline(settings.Deadline)));
+            _taskManager.AddTask(new Task(settings.TaskName, new Deadline(settings.Deadline), _idGenerator.NewId()));
             _userInterface.ShowMessage("Task successfully added.");
             return 0;
         }

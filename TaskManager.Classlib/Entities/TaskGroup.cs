@@ -25,16 +25,16 @@ namespace TaskManager.Entities {
                 .Find(task => task.Name == taskName);
         }
 
-        public Task GetTask(TaskId taskId) {
+        public Task GetTask(Id id) {
             Task task = _tasks
-                .Find(task => task.Id.GetIntId() == taskId.GetIntId());
+                .Find(task => task.Id.GetIntId() == id.GetIntId());
 
-            return task ?? throw new TaskManagerException($"Task with ID {taskId} does not exist.");
+            return task ?? throw new TaskManagerException($"Task with ID {id} does not exist.");
         }
 
         /// <returns>Deleted task.</returns>
-        internal bool DeleteFromGroup(TaskId taskId) {
-            Task task = GetTask(taskId);
+        internal bool DeleteFromGroup(Id id) {
+            Task task = GetTask(id);
             return _tasks.Remove(task);
         }
 

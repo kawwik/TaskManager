@@ -23,7 +23,7 @@ namespace TaskManager.Client.Commands {
         }
 
         public override int Execute(CommandContext context, Settings settings) {
-            _taskManager.GetTask(new TaskId(settings.TaskId)).AddSubtask(settings.SubtaskName);
+            _taskManager.GetTask(new Id(settings.TaskId)).AddSubtask(settings.SubtaskName);
             _userInterface.ShowMessage("Subtask added.");
             return 0;
         }

@@ -18,7 +18,7 @@ namespace TaskManager.Client.Commands {
         }
 
         public override int Execute(CommandContext context, Settings settings) {
-            _taskManager.GetTask(new TaskId(settings.TaskId)).Complete();
+            _taskManager.GetTask(new Id(settings.TaskId)).Complete();
             _userInterface.ShowMessage("Task completed.");
             return 0;
         }

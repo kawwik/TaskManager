@@ -19,7 +19,7 @@ namespace TaskManager.Client.Commands {
         }
 
         public override int Execute(CommandContext context, Settings settings) {
-            _taskManager.DeleteTask(new TaskId(settings.TaskId));
+            _taskManager.DeleteTask(new Id(settings.TaskId));
             _userInterface.ShowMessage("Task successfully deleted.");
             return 0;
         }

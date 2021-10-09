@@ -22,7 +22,7 @@ namespace TaskManager.Client.Commands {
         }
 
         public override int Execute(CommandContext context, Settings settings) {
-            _taskManager.DeleteFromGroup(new TaskId(settings.TaskId), settings.GroupName);
+            _taskManager.DeleteFromGroup(new Id(settings.TaskId), settings.GroupName);
             _userInterface.ShowMessage("Task deleted from the group.");
             return 0;
         }

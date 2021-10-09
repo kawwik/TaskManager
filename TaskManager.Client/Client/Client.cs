@@ -13,6 +13,7 @@ namespace TaskManager.Client {
             _services.AddSingleton(typeof(ITaskManager), new Services.TaskManager());
             _services.AddScoped(typeof(ITaskPrinter), typeof(TaskPrinter));
             _services.AddScoped(typeof(IUserInterface), typeof(AnsiConsoleUI));
+            _services.AddSingleton(typeof(IdGenerator), new IdGenerator(1));
 
             _app = new CommandApp(new TypeRegistrar(_services));
             _app.Configure(config => {

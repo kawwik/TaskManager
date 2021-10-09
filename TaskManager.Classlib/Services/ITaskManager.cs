@@ -8,13 +8,13 @@ namespace TaskManager.Services {
         ReadOnlyCollection<TaskGroup> Groups { get; }
 
         void AddTask(Task task);
-        void DeleteTask(TaskId taskId);
+        void DeleteTask(Id id);
         Task FindTask(string taskName);
-        Task GetTask(TaskId taskId);
+        Task GetTask(Id id);
         void CreateGroup(string groupName);
         void DeleteGroup(string groupName);
-        void AddToGroup(TaskId taskId, string groupName);
-        void DeleteFromGroup(TaskId taskId, string groupName);
+        void AddToGroup(Id id, string groupName);
+        void DeleteFromGroup(Id id, string groupName);
         TaskGroup GetGroup(string groupName);
         List<Task> CurrentTasks();
         List<Task> CompletedTasks();
