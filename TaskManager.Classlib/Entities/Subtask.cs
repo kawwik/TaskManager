@@ -6,6 +6,7 @@ namespace TaskManager.Entities {
     public class Subtask {
         public Subtask(string subtaskName, Id id) {
             Name = subtaskName;
+            Id = id;
         }
 
         public Id Id { get; }
