@@ -8,7 +8,7 @@ using TaskManager.Services;
 namespace TaskManager.Client.Commands {
     public class CompletedTasksCommand : Command<CompletedTasksCommand.Settings> {
         public class Settings : CommandSettings {
-            [CommandOption("-g")] 
+            [CommandOption("-g | --group")] 
             public string GroupName { get; init; }
         }
 
