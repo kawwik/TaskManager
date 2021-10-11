@@ -86,5 +86,19 @@ namespace TaskManager.Tests {
             });
             Assert.IsNotNull(_taskManager.FindTask(taskName));
         }
+
+        [Test]
+        public void AddSubtask_SubtaskIsInTask() {
+            const string taskName = "taskName";
+            const string subTaskName = "subTaskName";
+            var taskId = new Id(1);
+            var deadline = new Deadline(new DateTime(2010, 10, 10));
+
+            var task = new Task(taskName, deadline, taskId);
+            task.AddSubtask(subTaskName);
+            
+            Assert.IsNotNull(task.Subtasks.SingleOrDefault(subtask => subtask.Name == subTaskName));
+        }
+        
     }
 }
