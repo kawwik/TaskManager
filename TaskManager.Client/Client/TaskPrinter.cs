@@ -12,7 +12,8 @@ namespace TaskManager.Client {
                                      (task.IsCompleted ? " (completed)" : ""));
             
             foreach (Subtask subtask in task.Subtasks) {
-                taskNode.AddNode($"{task.Id.GetIntId()}.{subtask.Id.GetIntId()}. {subtask.Name}");
+                taskNode.AddNode($"{task.Id.GetIntId()}.{subtask.Id.GetIntId()}. {subtask.Name}" +
+                                 (subtask.IsCompleted ? " (completed)" : ""));
             }
 
             return taskNode;

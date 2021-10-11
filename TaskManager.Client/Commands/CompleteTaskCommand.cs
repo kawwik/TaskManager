@@ -28,6 +28,7 @@ namespace TaskManager.Client.Commands {
                 throw new TaskManagerException("Incorrect subtask ID.");
 
             _taskManager.GetTask(new Id(taskId)).CompleteSubtask(new Id(subId));
+            _userInterface.ShowMessage("Subtask successfully completed.");
         }
 
         public void CompleteTask(string id) {
@@ -36,6 +37,7 @@ namespace TaskManager.Client.Commands {
                 throw new TaskManagerException("Incorrect task ID.");
             
             _taskManager.GetTask(new Id(taskId)).Complete();
+            _userInterface.ShowMessage("Subtask successfully completed.");
         }
 
         public override int Execute(CommandContext context, Settings settings) {
